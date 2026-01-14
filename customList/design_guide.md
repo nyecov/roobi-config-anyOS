@@ -101,11 +101,14 @@ To create a robust custom OS source that persists even if official servers disap
     *   It acts as a catalog pointing to individual OS JSON files.
 
 2.  **`customList/assets/`**: The "Warehouse".
-    *   Contains the **Critical Support Files** needed for installation:
+    *   **`customList/assets/linux/`**:
         *   `before.sh`: Pre-install logic (e.g., flashing SPI ROM).
         *   `fast_flash_spi.py`: Tool to write firmware.
         *   `spi_image.xz`: The actual bootloader firmware binary.
         *   `*.deb`: U-Boot packages required to update the board state.
+    *   **`customList/assets/windows/`**:
+        *   `after.sh`: Post-install partition resizing script.
+    *   **Common**:
         *   `pic/*.svg`: OS logos/icons.
     *   By hosting these here, we ensure the "logic" of the install is safe.
 

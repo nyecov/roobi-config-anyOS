@@ -1,0 +1,37 @@
+#!/bin/bash
+# Windows Post-Install Script (after.sh)
+#
+# This script is executed by the Roobi installer after the Windows disk image has been 
+# written to the storage device. Its primary purpose is to expand the partition 
+# to fill the remaining disk space.
+#
+# Note: '{disk}' is a placeholder that Roobi replaces with the actual device path
+# (e.g., /dev/nvme0n1 or /dev/sda).
+
+# 1. Reload the partition table
+# The 'fdisk' command is used here with the 'w' (write) command to force the kernel 
+# to re-read the partition table of the disk. This ensures the system recognizes 
+# the partitions exactly as they were just written.
+echo -e "w" | fdisk {disk}
+
+# 2. Short pause for stability
+# Give the kernel a fraction of a second to settle file descriptors after the reload.
+sleep 0.1
+
+# 3. Resize the Windows partition
+# Use 'parted' to resize partition number 2 (common for Windows images where 
+# partition 1 is EFI/System and 2 is Primary/Data).
+# - "resizepart 2 100%": Tells parted to resize partition 2 to use 100% of available space.
+# - "\n quit": Exits parted.
+echo -e "resizepart 2 100% \n quit" | parted {disk} > /dev/null
+
+# 4. Resize the NTFS filesystem
+# After resizing the partition table container, the file system itself (NTFS) needs 
+# to be expanded to match the new size.
+if echo "{disk}" | grep -q "nvme"; then
+    # NVMe drives use the naming convention /dev/nvme0n1p2 (adding 'p' before partition number)
+    echo y | ntfsresize {disk}p2 > /dev/null
+else
+    # SATA/USB drives use /dev/sda2 (directly appending partition number)
+    echo y | ntfsresize {disk}2 > /dev/null
+fi
