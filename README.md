@@ -1,9 +1,9 @@
 # Roobi Config AnyOS
 
 ## Project Goal
-The primary aim of this project is to **decouple the lifecycle of the Radxa Rock 5 ITX board from the hosting capabilities of Radxa**. 
+The resource to provide a platform to add **any OS** to a custom list, simplifying the process of expanding the operating system choices for Roobi-compatible devices.
 
-By self-hosting the configuration files (`json`), bootloader scripts, and vital support artifacts required by the Roobi installer, this repository ensures that I can continue to reinstall and manage operating systems on my hardware even if the official Radxa servers go offline or older release files are removed.
+While initially created to decouple the lifecycle of the Radxa Rock 5 ITX board from official repositories, this project serves as a template and toolset for anyone wishing to curate their own OS catalogs.
 
 It serves as a self-contained "Custom Image Source" for the Roobi OS installer.
 
