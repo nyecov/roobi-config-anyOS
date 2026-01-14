@@ -2,6 +2,6 @@
     {
         "uuid": "c1fcf90fc85a450e85d1ae35628dece2",
         "name": "Debian 12 (Bookworm) OpenMediaVault",
-        "url": "https://example.com/customList/omv_bookworm.json"
+        "url": "https://raw.githubusercontent.com/nyecov/roobi-config-anyOS/main/customList/Armbian_25.11.1_Rock-5-itx_bookworm_vendor_6.1.115-omv_minimal.json"
     }
 ]
