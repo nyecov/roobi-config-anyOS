@@ -1,0 +1,93 @@
+#! /bin/bash
+# Defines the interpreter to use (bash).
+
+set -e
+# 'EXIT ON ERROR': Tells the script to stop immediately if any command returns a non-zero status (fails).
+
+current_script_path='.'
+# Sets a variable to the current directory where the script is running.
+
+_reboot=0
+# Initializes a variable named _reboot to 0 (though not explicitly used later in this snippet).
+
+python3 fast_flash_spi.py spi_image.xz /dev/mtdblock0
+# Runs a Python script 'fast_flash_spi.py'.
+# Argument 1: 'spi_image.xz' (the firmware image file).
+# Argument 2: '/dev/mtdblock0' (the target device, likely the SPI flash memory on the board).
+# This updates the board's firmware before doing anything else.
+
+# ======== u-boot =========
+# A section header comment indicating the following code handles U-Boot bootloader updates.
+
+rock_5_itx_file="$current_script_path/u-boot-rock-5-itx_*.deb"
+# Defines the filename pattern for the specific U-Boot package for the Rock 5 ITX board.
+
+rknext_file="$current_script_path/u-boot-rknext_*.deb"
+# Defines the filename pattern for the 'rknext' U-Boot package (kernel/bootloader core).
+
+rknext_version=$(dpkg --info $rknext_file | grep Version | awk '{print $2}')
+# Extracts the version number from the 'rknext' .deb package file.
+# 1. dpkg --info: gets package details.
+# 2. grep Version: finds the line starting with "Version".
+# 3. awk '{print $2}': prints the second word (the actual version number).
+
+version_file=/usr/Roobi/u-boot-version.txt
+# Defines the path to a text file that stores the currently installed U-Boot version on the Roobi system.
+
+if [[ ! -f $version_file  ]] || [[ $(cat $version_file) != $rknext_version ]];then
+# Checks if the version file DOES NOT exist (-f) OR if the content of the version file DOES NOT match the new package version.
+# If either is true, we need to update.
+
+    dpkg -i $rknext_file $rock_5_itx_file 
+    # Installs the two .deb packages using dpkg. '-i' means install.
+
+    root_device=$(df -P / | awk 'NR==2 {print $1}')
+    # Finds the device name of the root filesystem.
+    # 1. df -P /: shows disk space usage for root (/) in POSIX format.
+    # 2. awk 'NR==2 {print $1}': prints the first column of the second line (e.g., /dev/mmcblk0p2).
+
+    physical_device=$(lsblk -no PKNAME "$root_device")
+    # Finds the parent physical device (e.g., if root is /dev/mmcblk0p2, this usually returns mmcblk0).
+    # lsblk -no PKNAME: lists block devices, outputting only the Parent Kernel Name.
+
+    systemctl mask reboot.target
+    # Disables the 'reboot' target. Prevents the system from rebooting during the critical update.
+
+    systemctl mask poweroff.target
+    # Disables the 'poweroff' target.
+
+    systemctl mask halt.target
+    # Disables the 'halt' target.
+
+    /usr/lib/u-boot/rock-5-itx/setup.sh update_bootloader /dev/$physical_device || return_value=$?
+    # Runs the actual bootloader update script provided by the installed package.
+    # Argument 1: 'update_bootloader' (command).
+    # Argument 2: '/dev/$physical_device' (the target drive to write the bootloader to).
+    # '|| return_value=$?': If the command fails, capture the error code in 'return_value'.
+
+    if [ $return_value -eq 0 ]; then
+    # Checks if the previous command was successful (exit code 0).
+
+        echo $rknext_version > $version_file || true
+        # Updates the version file with the new version number. '|| true' ensures the script doesn't fail if this write fails.
+    fi
+
+    systemctl unmask reboot.target
+    # Re-enables the 'reboot' target.
+
+    systemctl unmask poweroff.target
+    # Re-enables the 'poweroff' target.
+
+    systemctl unmask halt.target
+    # Re-enables the 'halt' target.
+
+    sync
+    # Forces all changed blocks to disk to ensure data is safely written.
+
+    echo "Update Bootloader Success!"
+    # Prints a success message.
+
+else
+    echo "Bootloader up to date!"
+    # If the version check at the start failed (versions matched), just print this message.
+fi

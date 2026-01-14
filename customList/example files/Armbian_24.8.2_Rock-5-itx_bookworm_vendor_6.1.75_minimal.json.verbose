@@ -1,0 +1,111 @@
+{
+  "uuid": "d599cef0687b4fcc90942d35e3f6e2e7",
+  // Unique Identifier for this specific OS configuration. Must match the entry in list.json.
+
+  "description": {
+  // Localized descriptions of the OS.
+    "zh-CN": "这是一个来自于 Armbian 的镜像...",
+    // Simplified Chinese description.
+    "en": "This is an Armbian image maintained by a third party. ..."
+    // English description.
+  },
+
+  "img": "https://roobi.radxa.com/pic/armbian.svg",
+  // URL to the logo image displayed in the Roobi interface.
+
+  "download": [
+  // Array of files to be downloaded for this installation.
+    {
+      "file_name": "before.sh",
+      // Name of the first file to download. This is a pre-install script.
+      "size": 1119,
+      // Size in bytes.
+      "urls": [
+        "https://gate.radxa.com/palmshell/RoobiOS/releases/download/itx-uboot-spi-flash/before.sh"
+      ],
+      // Where to download it from.
+      "md5": "a2cb632b124ef2aa6e3fbcd3d7e69bea",
+      // MD5 checksum for integrity verification.
+      "sig": "Dhxalf0igo2sOYj0exBeuxBITTckYGpHr8EoGyhDhxV/3Irng..."
+      // Cryptographic signature for authenticity verification.
+    },
+    {
+      "file_name": "fast_flash_spi.py",
+      // Name of the second file. A helper python script for flashing.
+      "size": 894,
+      "urls": [
+        "https://gate.radxa.com/palmshell/RoobiOS/releases/download/itx-uboot-spi-flash/fast_flash_spi.py"
+      ],
+      "md5": "b97911355af3f6e4344ba44a86ed0af7",
+      "sig": "NEBPMpuM7R5fAvyyFeluVwdK6PYs9Sz..."
+    },
+    {
+      "file_name": "spi_image.xz",
+      // Firmware image for the SPI flash.
+      "size": 548988,
+      "urls": [
+        "https://gate.radxa.com/palmshell/RoobiOS/releases/download/itx-uboot-spi-flash/spi_image.xz"
+      ],
+      "md5": "f232b01a57d0bb5eea1b25bd47bb7d78",
+      "sig": "MIEAwpzZtmMlgjEM0E6InyALm31vFA..."
+    },
+    {
+      "file_name": "u-boot-rknext_2017.09-27-44733d4_arm64.deb",
+      // Debian package containing U-Boot binaries.
+      "size": 2465712,
+      "urls": [
+        "https://gate.radxa.com/palmshell/RoobiOS/releases/download/itx-uboot-spi-flash/u-boot-rknext_2017.09-27-44733d4_arm64.deb"
+      ],
+      "md5": "fbc5a351bd137b0799edd459ffc84c8f",
+      "sig": "GzQNTNsllS5hljsrWopHwoz5KmqjpPV..."
+    },
+    {
+      "file_name": "u-boot-rock-5-itx_2017.09-27-e7f57d7_all.deb",
+      // Debian package containing board-specific configs.
+      "size": 1116,
+      "urls": [
+        "https://gate.radxa.com/palmshell/RoobiOS/releases/download/itx-uboot-spi-flash/u-boot-rock-5-itx_2017.09-27-e7f57d7_all.deb"
+      ],
+      "md5": "dc0ebe53c7851a0c01182ffc54983871",
+      "sig": "c0p/bayGjVxdKkekaw9hYmqGHh0vNHQXFh..."
+    },
+    {
+      "file_name": "install.img.xz",
+      // THE MAIN OS IMAGE. This is the actual operating system disk image.
+      "size": 238271932,
+      "urls": [
+        "https://gate.radxa.com/palmshell/RoobiOS/releases/download/armbian_24.8.2/Armbian_24.8.2_Rock-5-itx_bookworm_vendor_6.1.75_minimal.img.xz"
+      ],
+      "md5": "1215f58c023302271d94258cb1537d80"
+    }
+  ],
+
+  "name": "Armbian Bookworm CLI",
+  // Display name in the Roobi UI.
+
+  "version": "24.8.2_bookworm_vendor_6.1.75_minimal",
+  // Version string of this release.
+
+  "author": "Armbian",
+  // Author of the image.
+
+  "date": "2024-08-26",
+  // Release date.
+
+  "scripts": [
+    {
+      "type": "auto",
+      // "auto" means Roobi handles the image writing logic automatically. 
+      // It will look for .img/.img.xz files in the download list and flash them to the target disk.
+      "text": "start",
+      // Command text, standard is "start".
+      "size": 1484783616
+      // INSTALL SIZE (Uncompressed):
+      // The exact size of the OS image on the disk AFTER installation/decompression (~1.48 GB).
+      // Roobi uses this to check if the target drive is large enough and to calculate the installation progress bar.
+      // Note: This is different from the DOWNLOAD size (~238 MB) listed in the 'download' section above.
+    }
+  ],
+  "script_version": "1"
+  // Version of the Roobi script format itself (always 1).
+}

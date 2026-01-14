@@ -1,0 +1,84 @@
+#!/usr/bin/python3
+# Specifies that this script should be run using Python 3.
+
+import os
+# Imports the 'os' module for low-level operating system interactions (file opening, seeking, etc.).
+
+import sys
+# Imports the 'sys' module to access command-line arguments.
+
+BLOCK_SIZE = 4096
+# Sets the chunk size for reading and comparing data to 4096 bytes (4KB). 
+# This is a common block size for filesystems and flash storage.
+
+def process(spi_file, device):
+# Defines the main function that takes the source image path (spi_file) and the target device path (device).
+
+    with open(device, 'rb') as f:
+        blk_data = f.read()
+    # Opens the target device (e.g., /dev/mtdblock0) in 'read binary' ('rb') mode.
+    # Reads the ENTIRE content of the device into memory variable 'blk_data'.
+    # This assumes the SPI flash is small enough to fit in RAM (common for SPI boot chips, usually 16MB-32MB).
+
+    with open(spi_file, 'rb') as f:
+        spi_data = f.read()
+    # Opens the source image file (the update) in 'read binary' mode.
+    # Reads the ENTIRE content of the source file into memory variable 'spi_data'.
+
+    now = 0
+    # Initializes a cursor 'now' to 0 to track the current position in the data.
+
+    device_fd = os.open(device, os.O_WRONLY, )
+    # Opens the target device again, but this time in 'Write Only' mode using a low-level OS call.
+    # Returns a file descriptor (integer).
+
+    f = os.fdopen(device_fd, 'wb', 0)
+    # Wraps the file descriptor in a Python file object for easier writing.
+    # 'wb' = write binary.
+    # '0' = UNBUFFERED mode. This is critical. It ensures data is sent to the device immediately 
+    # and not held in a software buffer, which is safer for hardware flashing.
+
+    while now + BLOCK_SIZE < len(spi_data):
+    # Loops through the data in chunks of BLOCK_SIZE until we reach the end of the source data.
+    # Note: This simple loop condition might miss the very last chunk if the file size isn't a perfect multiple of 4096.
+
+        if blk_data[now:now + BLOCK_SIZE] != spi_data[now:now + BLOCK_SIZE]:
+        # COMPARES the existing data on the chip (blk_data) with the new data (spi_data).
+        # This is the "FAST" part of "fast_flash". 
+        # It ONLY writes to the chip if the data is different.
+        # This saves time (writing is slow) and reduces wear on the flash memory.
+
+            f.seek(now)
+            # If data is different, move the write cursor to the current position.
+
+            f.write(spi_data[now:now + BLOCK_SIZE])
+            # Write the new block of data to the device.
+
+        now += BLOCK_SIZE
+        # Move the cursor forward to the next block.
+
+    f.close()
+    # Closes the file handle, flushing any pending operations (though it was unbuffered).
+
+
+if __name__ == "__main__":
+# Standard Python boilerplate to execute code only if run as a script (not imported).
+
+    try:
+        spi_file = sys.argv[1]
+        # Gets the first command line argument (the source image file).
+
+        device = sys.argv[2]
+        # Gets the second command line argument (the target device, e.g., /dev/mtdblock0).
+
+    except IndexError:
+        # Catches the error if the user didn't provide enough arguments.
+        print("USAGE: python3 fast_flash_spi.py <spi_file> <spi_device>")
+        exit(1)
+        # Exits with an error code.
+
+    print("Writing SPI Flash, Please wait...", flush=True)
+    # Prints a status message. 'flush=True' ensures it appears immediately on the screen.
+
+    process(spi_file, device)
+    # Calls the main processing function defined above.
