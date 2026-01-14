@@ -90,4 +90,28 @@ Defines the installation procedure.
 | :--- | :--- | :--- |
 | `type` | String | usually `"auto"`. Tells Roobi to handle image writing automatically. |
 | `text` | String | Command text, usually `"start"`. |
-| `size` | Number | Estimated uncompressed size or size required on disk (bytes). |
+| `size` | Number | **Install Size (Uncompressed)**. The exact size of the OS on disk after installation (bytes). This is used for checking disk capacity and calculating the progress bar. |
+
+## Repository Structure & Custom Assets
+
+To create a robust custom OS source that persists even if official servers disappear, this repository adopts a self-contained structure:
+
+1.  **`customList/list.json`**: The entry point.
+    *   This is the URL you give to Roobi custom source settings.
+    *   It acts as a catalog pointing to individual OS JSON files.
+
+2.  **`customList/assets/`**: The "Warehouse".
+    *   Contains the **Critical Support Files** needed for installation:
+        *   `before.sh`: Pre-install logic (e.g., flashing SPI ROM).
+        *   `fast_flash_spi.py`: Tool to write firmware.
+        *   `spi_image.xz`: The actual bootloader firmware binary.
+        *   `*.deb`: U-Boot packages required to update the board state.
+        *   `pic/*.svg`: OS logos/icons.
+    *   By hosting these here, we ensure the "logic" of the install is safe.
+
+3.  **`customList/os_configs/*.json`**: The "Blueprints".
+    *   (e.g., `Armbian_...omv_minimal.json`)
+    *   These files define *how* to combine the **assets** (from this repo) and the **Main OS Image** (usually from an external mirror like `dl.armbian.com`) to perform a complete installation.
+
+### Why include supporting files?
+Simple OS installs just write an image to a disk. Complex installs (like for the Rock 5 ITX) often require updating the board's internal firmware (SPI Flash) to match the incoming OS. By bundling these scripts and binaries in the `assets` folder and referencing them in the `download` array of your JSON, you ensure the installation succeeds even on a board with outdated firmware.
