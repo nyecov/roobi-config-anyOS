@@ -115,3 +115,9 @@ To create a robust custom OS source that persists even if official servers disap
 
 ### Why include supporting files?
 Simple OS installs just write an image to a disk. Complex installs (like for the Rock 5 ITX) often require updating the board's internal firmware (SPI Flash) to match the incoming OS. By bundling these scripts and binaries in the `assets` folder and referencing them in the `download` array of your JSON, you ensure the installation succeeds even on a board with outdated firmware.
+
+### Shared Utilities (Linux)
+Across different Linux distributions for the same hardware (e.g., Rock 5 ITX), the "utility" files required for the bootloader update process are often identical.
+*   **Observation**: Whether you are installing Ubuntu 24.04, Armbian Noble, or Debian Bookworm on the Rock 5 ITX (`ps009`), they all utilize the exact same `before.sh`, `fast_flash_spi.py`, and `spi_image.xz` files.
+*   **Benefit**: This means you can reuse the same assets in your `customList/assets/` folder for multiple different Linux OS entries for the same board.
+*   **Note**: This pattern applies primarily to Linux-based images sharing the same boot rom requirements. Windows or other non-Linux systems may have significantly different installation procedures or utility requirements.
