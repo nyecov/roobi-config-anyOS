@@ -118,6 +118,6 @@ Simple OS installs just write an image to a disk. Complex installs (like for the
 
 ### Shared Utilities (Linux)
 Across different Linux distributions for the same hardware (e.g., Rock 5 ITX), the "utility" files required for the bootloader update process are often identical.
-*   **Observation**: Whether you are installing Ubuntu 24.04, Armbian Noble, or Debian Bookworm on the Rock 5 ITX (`ps009`), they all utilize the exact same `before.sh`, `fast_flash_spi.py`, and `spi_image.xz` files.
+*   **Observation**: Whether you are installing Ubuntu 24.04, Armbian Noble, or Debian Bookworm on the Rock 5 ITX (`ps009`), they all utilize the exact same `before.sh`, `fast_flash_spi.py`, `spi_image.xz`, and **U-Boot Debian packages** (`u-boot-rknext...` and `u-boot-rock-5-itx...`).
 *   **Benefit**: This means you can reuse the same assets in your `customList/assets/` folder for multiple different Linux OS entries for the same board.
 *   **Note**: This pattern applies primarily to Linux-based images sharing the same boot rom requirements. Windows or other non-Linux systems may have significantly different installation procedures or utility requirements.
