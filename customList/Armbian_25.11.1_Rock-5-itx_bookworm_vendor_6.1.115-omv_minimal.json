@@ -5,7 +5,7 @@
     "description": {
         "en": "Armbian 25.11.1 (Bookworm) with OpenMediaVault pre-installed for Rock 5 ITX."
     },
-    "img": "https://roobi.radxa.com/pic/omv.svg",
+    "img": "https://raw.githubusercontent.com/nyecov/roobi-config-anyOS/main/customList/assets/pic/armbian.svg",
     "version": "25.11.1",
     "author": "Armbian",
     "date": "2026-01-14",
