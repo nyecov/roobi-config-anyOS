@@ -163,3 +163,9 @@ Roobi uses specific unique identifiers (e.g., `ps009`) to identify the connected
 | **`ps006`** | **x86 Device** (e.g. Palmshell) | **x86_64** | **Image + Resize**: Uses standard UEFI boot. Scripts (`after.sh`) focus on resizing partitions (NTFS/Ext4) or injecting drivers. |
 | **`ps010`** | **x86 Device** (Revision?) | **x86_64** | Same as `ps006`. |
 | **`ps002`** | **x86 Device** (Legacy?) | **x86_64** | Same as `ps006`. |
+
+## External References
+
+### OpenWrt Support
+*   **Radxa Rock 5 ITX (ToH)**: [OpenWrt Hardware Data](https://openwrt.org/toh/hwdata/radxa/radxa_rock_5_itx_itx)
+*   **Rock 5 ITX Support Commit**: [OpenWrt Git Commit Reference](https://git.openwrt.org/?p=openwrt/openwrt.git;a=commit;h=083934521186d54ded432c16a91e5fcea73c8308)
