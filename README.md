@@ -12,6 +12,8 @@ It serves as a self-contained "Custom Image Source" for the Roobi OS installer.
 
 I own a **Radxa Rock 5 ITX (16GB RAM) v1.11 model**. The primary purpose of this project is to ensure that years from now—when links have rotted, wikis have moved, and my memory has faded—I can still perform a clean, working installation of my preferred OS on this specific hardware. All necessary scripts, bootloaders, and logic are archived here to withstand the test of time.
 
+> **Disclaimer**: While I have forked key repositories (like [Docs](https://github.com/nyecov/radxa-docs-fork) and [BSP](https://github.com/nyecov/radxa-bsp)) to safeguard them, **always use the [Official Radxa Repositories](https://github.com/radxa-docs) and [Wiki](https://radxa.com/products/rock5/5itx/#documentation) for the most up-to-date information.** My forks are static snapshots and are not promised to stay in sync.
+
 ## How to Use
 1.  In the Roobi Installer interface, look for "Advanced Features" or "Settings".
 2.  Find the option to add a **Custom Image Source**.
