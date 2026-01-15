@@ -1,4 +1,4 @@
-# Roobi Custom Image Source Design Guide
+# RoobiVault Design Guide
 
 ## UUID Format
 
@@ -116,6 +116,8 @@ To create a robust custom OS source that persists even if official servers disap
     *   **Common**:
         *   `pic/*.svg`: OS logos/icons.
     *   By hosting these here, we ensure the "logic" of the install is safe.
+
+    *   **Large Recovery Images**: For very large files (e.g., full `.img.xz` flasher images > 500MB), it is recommended to host them as **GitHub Release Assets** instead of tracking them in the Git repository. Reference them in your JSON via the permanent release download URL.
 
 3.  **`customList/study/`**: The "Classroom".
     *   This folder mirrors the `assets` structure but contains `.verbose` and `.md` files.
