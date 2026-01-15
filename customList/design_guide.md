@@ -172,3 +172,9 @@ Roobi uses specific unique identifiers (e.g., `ps009`) to identify the connected
 
 ### Armbian / Linux Support
 *   **Armbian Rock 5 ITX**: [Armbian Download & Info](https://www.armbian.com/radxa-rock-5-itx/)
+
+### Radxa Official References
+*   **Roobi OS Documentation**: [Official Wiki Root](https://docs.radxa.com/en/roobi)
+*   **Roobi Usage (Rock 5 ITX)**: [Usage Guide](https://docs.radxa.com/en/roobi/roobi-usage?devices=itx)
+*   **Rock 5 ITX Product Page**: [Radxa Product Detail](https://radxa.com/products/rock5/5itx/)
+*   **Rock 5 ITX Documentation**: [Product Docs](https://radxa.com/products/rock5/5itx/#documentation)
