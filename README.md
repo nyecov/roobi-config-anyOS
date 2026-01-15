@@ -22,10 +22,15 @@ I own a **Radxa Rock 5 ITX (16GB RAM) v1.11 model**. The primary purpose of this
     https://raw.githubusercontent.com/nyecov/roobi-config-anyOS/main/customList/list.json
     ```
 4.  The custom OS entries will now appear in your installation list.
-    > **Target OS Details**: This configuration installs **Armbian Linux v6.12 - Debian 12 (Bookworm) with OpenMediaVault included**.
+    > **Target OS Details**: This configuration installs **Armbian Linux OpenMediaVault included**.
     > *   **Source URL**: [https://dl.armbian.com/rock-5-itx/Bookworm_vendor_minimal-omv](https://dl.armbian.com/rock-5-itx/Bookworm_vendor_minimal-omv)
     > *   **Found On**: [https://www.armbian.com/radxa-rock-5-itx/](https://www.armbian.com/radxa-rock-5-itx/)
-    > *   **Build Info**: Jan 15, 2026 | 335.3 MB
+    >
+    > *Note: A second entry ("Armbian OMV Time Capsule") is also included, which pulls from a static GitHub Release backup in case the official servers are down.*
+
+## Documentation
+For detailed guides on how this repository works, how to build custom assets, and troubleshooting, please visit the **[Project Wiki](https://github.com/nyecov/roobi-config-anyOS/wiki)**.
+    
 
 ## Attribution
 This repository was generated and structured with the assistance of **Antigravity** to accelerate development time.
