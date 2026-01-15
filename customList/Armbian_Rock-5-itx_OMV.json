@@ -1,7 +1,7 @@
 {
     "script_version": "1",
     "uuid": "c1fcf90fc85a450e85d1ae35628dece2",
-    "name": "Armbian 25.11.1 OMV (Rock 5 ITX)",
+    "name": "Armbian Linux OpenMediaVault included",
     "description": {
         "en": "Armbian 25.11.1 (Bookworm) with OpenMediaVault pre-installed for Rock 5 ITX."
     },
