@@ -3,5 +3,10 @@
         "uuid": "c1fcf90fc85a450e85d1ae35628dece2",
         "name": "Armbian Linux OpenMediaVault included",
         "url": "https://raw.githubusercontent.com/nyecov/roobi-config-anyOS/main/customList/Armbian_Rock-5-itx_OMV.json"
+    },
+    {
+        "uuid": "c1fcf90fc85a450e85d1ae35628dece3",
+        "name": "Armbian OMV (Time Capsule)",
+        "url": "https://raw.githubusercontent.com/nyecov/roobi-config-anyOS/main/customList/Armbian_Rock-5-itx_OMV_Archive.json"
     }
 ]
