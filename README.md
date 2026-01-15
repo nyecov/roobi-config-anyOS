@@ -14,6 +14,15 @@ I own a **Radxa Rock 5 ITX (16GB RAM) v1.11 model**. The primary purpose of this
 
 > **Disclaimer**: While I have forked key repositories (like [Docs](https://github.com/nyecov/radxa-docs-fork) and [BSP](https://github.com/nyecov/radxa-bsp)) to safeguard them, **always use the [Official Radxa Repositories](https://github.com/radxa-docs) and [Wiki](https://radxa.com/products/rock5/5itx/#documentation) for the most up-to-date information.** My forks are static snapshots and are not promised to stay in sync.
 
+### Build Specifications
+This build is designed for my homelabbing hobby and as a self-hosted NAS. All components were purchased from AliExpress with personal funds based on their specifications. **I am not sponsored by Radxa.**
+
+**Hardware Inventory:**
+*   **Board**: Radxa ROCK 5 ITX (16GB RAM)
+*   **Cooling**: Radxa Heatsink 8418B
+*   **Power**: Radxa Power DC12 60W
+*   **Storage Expansion**: Radxa M.2 to 6x SATA Adapter
+
 ## How to Use
 1.  In the Roobi Installer interface, look for "Advanced Features" or "Settings".
 2.  Find the option to add a **Custom Image Source**.
