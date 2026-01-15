@@ -1,0 +1,33 @@
+#!/bin/bash
+# Ubuntu (x86) Post-Install Script (after.sh)
+#
+# Unlike the Windows or OpenWrt 'after.sh' scripts which resize partitions,
+# this script is used to inject a specific driver kernel module (btusb.ko)
+# into the installed system. This suggests the stock kernel in the image 
+# might lack proper Bluetooth support for the specific hardware (Palmshell Pocket?).
+
+# 1. Sync Filesystem buffers
+sync
+
+# 2. Create a temporary mount point
+temp=$(mktemp -d)
+
+# 3. Probe partitions
+# Ensures the kernel sees the partition table of the newly written disk.
+partprobe
+
+# 4. Mount the Root Filesystem
+# Mounts the 2nd partition (assumed to be the rootfs) to the temp directory.
+if echo "{disk}" | grep -q "nvme"; then
+    mount {disk}p2 "$temp"
+else
+    mount {disk}2 "$temp"
+fi
+
+# 5. Inject the Driver
+# Copies the 'btusb.ko' file (downloaded by Roobi to a cache path) 
+# into the correct kernel module path within the mounted target system.
+#
+# Note: The source path '/opt/reming/scripts/...' contains the UUID of the OS config.
+# Roobi downloads 'download' items to this location.
+cp /opt/reming/scripts/58373afacba743b1aa06b8b88dd39211/btusb.ko $temp/lib/modules/6.2.0-26-generic/kernel/drivers/bluetooth/

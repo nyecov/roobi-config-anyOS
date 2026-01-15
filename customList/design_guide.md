@@ -110,6 +110,8 @@ To create a robust custom OS source that persists even if official servers disap
         *   `after.sh`: Post-install partition resizing script.
     *   **`customList/assets/openwrt/`**:
         *   `after.sh`: Post-install partition resizing script (includes partition customization).
+    *   **`customList/assets/linux_x86/`**:
+        *   `after.sh`: Post-install script for driver injection (e.g., Ubuntu patches).
     *   **Common**:
         *   `pic/*.svg`: OS logos/icons.
     *   By hosting these here, we ensure the "logic" of the install is safe.
@@ -128,7 +130,8 @@ Across different Linux distributions for the same **ARM** hardware (e.g., Rock 5
 
 ### Shared Utilities (Linux x86)
 For x86 platforms (like `ps006` / `ps010`), Linux installations do **not** use the ARM SPI flashing tools. Instead, they operate more like Windows or OpenWrt x86:
-*   **Observation**: Ubuntu on `ps006` uses an **`after.sh`** script (different from the Windows one) to handle partition resizing.
+*   **Observation**: Ubuntu on `ps006` uses an **`after.sh`** script (different from the Windows one).
+*   **Purpose**: Unlike Windows (resize only), this script is often used for specific **Hotfixes or Driver Injection** (e.g., copying a missing `btusb.ko` kernel module into the target system).
 *   **Key Distinction**: Always check the target architecture. ARM needs `before.sh` (usually); x86 needs `after.sh`.
 
 ### Shared Utilities (Windows)
