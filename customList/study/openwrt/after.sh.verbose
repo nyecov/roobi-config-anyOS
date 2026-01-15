@@ -1,0 +1,34 @@
+#!/bin/bash
+# OpenWrt Post-Install Script (after.sh)
+#
+# This script is executed by the Roobi installer after the OpenWrt disk image has been 
+# written. OpenWrt images often have a complex partition layout that needs adjustment 
+# to utilize the full disk space.
+
+# 1. Modify Partition Table
+# echo -e "d\n3\nw" | fdisk {disk}
+# - d: Delete a partition.
+# - 3: Select partition number 3.
+# - w: Write changes and exit.
+# This suggests the default image might have a 3rd partition (perhaps a placeholder or 
+# factory data) that interferes with resizing the main rootfs (partition 2), so it is removed.
+echo -e "d\n3\nw" | fdisk {disk}
+
+# 2. Resize the Root Partition
+# Use 'parted' to expand partition 2 to fill 100% of the remaining space 
+# (now available after deleting partition 3).
+echo -e "resizepart 2 100% \n quit" | parted {disk} > /dev/null
+
+# 3. Resize the Filesystem (Ext4)
+# OpenWrt uses the Ext4 filesystem (unlike NTFS for Windows).
+if echo "{disk}" | grep -q "nvme"; then
+    # For NVMe drives (e.g., /dev/nvme0n1p2)
+    # Check filesystem consistency (required before resize)
+    e2fsck -f {disk}p2
+    # Resize the ext4 filesystem to fill the partition
+    resize2fs {disk}p2
+else
+    # For SATA/USB drives (e.g., /dev/sda2)
+    e2fsck -f {disk}2
+    resize2fs {disk}2
+fi

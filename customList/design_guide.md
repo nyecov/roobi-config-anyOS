@@ -108,6 +108,8 @@ To create a robust custom OS source that persists even if official servers disap
         *   `*.deb`: U-Boot packages required to update the board state.
     *   **`customList/assets/windows/`**:
         *   `after.sh`: Post-install partition resizing script.
+    *   **`customList/assets/openwrt/`**:
+        *   `after.sh`: Post-install partition resizing script (includes partition customization).
     *   **Common**:
         *   `pic/*.svg`: OS logos/icons.
     *   By hosting these here, we ensure the "logic" of the install is safe.
@@ -129,3 +131,9 @@ Windows installations on these platforms operate differently and typically assum
 *   **Observation**: Windows 10 entries (`ps010` / `ps006`) do **not** use `before.sh`, `fast_flash_spi.py`, or `spi_image.xz`.
 *   **Utilities**: They instead rely on a post-install script, typically named **`after.sh`** (downloaded from sources like `win10.sh`).
 *   **Key Difference**: You generally do **not** flash the SPI bootloader during a Windows installation via Roobi. Ensure you do not blindly copy Linux utility dependencies into a Windows OS configuration.
+
+### Shared Utilities (OpenWrt/x86)
+OpenWrt, specifically the x86 variant (`ps010`), follows a unique pattern:
+*   **Observation**: Uses a distinct **`after.sh`** (typically `openwrt.sh`).
+*   **Utilities**: It does not use the SPI flash tools found in the ARM Linux builds.
+*   **Specifics**: The `after.sh` script for OpenWrt often includes specific commands to delete factory partitions (`fdisk` delete) and resize the Ext4 filesystem (`resize2fs`), distinguishing it from the Windows `after.sh` which uses `ntfsresize`.
