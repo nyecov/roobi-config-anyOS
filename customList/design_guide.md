@@ -112,6 +112,7 @@ To create a robust custom OS source that persists even if official servers disap
         *   `after.sh`: Post-install partition resizing script (includes partition customization).
     *   **`customList/assets/linux_x86/`**:
         *   `after.sh`: Post-install script for driver injection (e.g., Ubuntu patches).
+        *   `btusb.ko`: Binary kernel module (driver) injected by `after.sh`.
     *   **Common**:
         *   `pic/*.svg`: OS logos/icons.
     *   By hosting these here, we ensure the "logic" of the install is safe.
