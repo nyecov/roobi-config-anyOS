@@ -3,7 +3,7 @@
     "uuid": "c1fcf90fc85a450e85d1ae35628dece2",
     "name": "Armbian Linux OpenMediaVault included",
     "description": {
-        "en": "Armbian 25.11.1 (Bookworm) with OpenMediaVault pre-installed for Rock 5 ITX."
+        "en": "Official Armbian Linux (Bookworm) from Armbian website. Minimal build with OpenMediaVault preloaded."
     },
     "img": "https://raw.githubusercontent.com/nyecov/roobi-config-anyOS/main/customList/assets/pic/armbian.svg",
     "version": "25.11.1",
@@ -56,10 +56,10 @@
             "sig": "c0p/bayGjVxdKkekaw9hYmqGHh0vNHQXFhpd8ju8As+EUIWERBDVLyYXMACGprSr3itCUhmHNqgghwv4lGv+VqZbCQOkv3JBx3fwYo4SIkc5SInRRm6UrjS+nJfJw2hUJrRoAfbCX7ALHAlnqWQRS7SAnVEFm1PIwFXM1wKnsxTRiLUE5h+xCvKItfrPcT4SLd323Qg82GNLE/gl0EGPeoDPRg6a/KYJgHWCxh9kfdBvW9+RcAhZatquSCclKLSoO66zp6CqqA4gbO4gQBkNjizg6Xj9gbE5Q/aw0BJgfzTS1miife1UCunQbox/KqJPo4Mh6+RFHpjXykFe6ItzNw=="
         },
         {
-            "file_name": "Armbian_25.11.1_Rock-5-itx_bookworm_vendor_6.1.115-omv_minimal.img.xz",
+            "file_name": "Armbian_Rock-5-itx_OMV.img.xz",
             "size": 351570188,
             "urls": [
-                "https://github.com/nyecov/roobi-config-anyOS/releases/download/v1.2.1/Armbian_25.11.1_Rock-5-itx_bookworm_vendor_6.1.115-omv_minimal.img.xz"
+                "https://dl.armbian.com/rock-5-itx/Bookworm_vendor_minimal-omv"
             ],
             "md5": "a45e600413ea8cbeab68d58b2cf32aae"
         }
