@@ -18,17 +18,3 @@ It serves as a self-contained "Custom Image Source" for the Roobi OS installer.
 
 ## Attribution
 This repository was generated and structured with the assistance of **Antigravity** to accelerate development time.
-
----
-
-## Search Keywords & SEO
-To help the community find this resource, use the following keywords when searching or tagging:
-*   **Primary**: `Roobi OS`, `AnyRoobi`, `Radxa Rock 5 ITX`, `Custom OS Installer`.
-*   **Hardware**: `RK3588`, `Rockchip`, `SBC`, `Thin-ITX`, `NVMe Boot`.
-*   **Operating Systems**: `Armbian`, `OpenMediaVault`, `OpenWrt`, `Ubuntu ARM`.
-*   **Utility**: `Flasher`, `SPI Bootloader`, `Maskrom Recovery`, `Roobi Config`.
-
----
-
-## 🛠 GitHub Topics (Copy these to your repository settings)
-`roobi-os`, `radxa`, `rock-5-itx`, `rk3588`, `custom-os`, `armbian`, `openmediavault`, `openwrt`, `self-hosted`, `anyroobi`, `rockchip`, `sbc`, `flasher`, `recovery`
