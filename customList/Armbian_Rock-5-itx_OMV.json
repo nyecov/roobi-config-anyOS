@@ -6,9 +6,9 @@
         "en": "Official Armbian Linux (Bookworm) from Armbian website. Minimal build with OpenMediaVault preloaded."
     },
     "img": "https://raw.githubusercontent.com/nyecov/roobi-config-anyOS/main/customList/assets/pic/armbian.svg",
-    "version": "25.11.1",
+    "version": "Check Armbian Website",
     "author": "Armbian",
-    "date": "2026-01-14",
+    "date": "Check Armbian Website",
     "download": [
         {
             "file_name": "before.sh",
