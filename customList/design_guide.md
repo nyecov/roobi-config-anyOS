@@ -169,3 +169,6 @@ Roobi uses specific unique identifiers (e.g., `ps009`) to identify the connected
 ### OpenWrt Support
 *   **Radxa Rock 5 ITX (ToH)**: [OpenWrt Hardware Data](https://openwrt.org/toh/hwdata/radxa/radxa_rock_5_itx_itx)
 *   **Rock 5 ITX Support Commit**: [OpenWrt Git Commit Reference](https://git.openwrt.org/?p=openwrt/openwrt.git;a=commit;h=083934521186d54ded432c16a91e5fcea73c8308)
+
+### Armbian / Linux Support
+*   **Armbian Rock 5 ITX**: [Armbian Download & Info](https://www.armbian.com/radxa-rock-5-itx/)
