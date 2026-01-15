@@ -10,11 +10,11 @@ The `uuid` field in `list.json` and the corresponding OS configuration JSON file
     *   Standard UUID: `26cbf15b-3066-431d-8641-8809b7468fae`
     *   Roobi UUID: `26cbf15b3066431d86418809b7468fae`
 
-To generate a valid UUID, you can generate a standard UUIDv4 and remove all `-` characters.
+To generate a valid UUID, you can use [uuidgenerator.net](https://www.uuidgenerator.net/) (choose Version 4) and then remove all `-` characters.
 
 ## OS Configuration JSON Elements
 
-The OS specific JSON file (e.g., `omv_bookworm.json`) instructs Roobi on how to download and install the operating system. Below are the key elements based on `Armbian_24.8.2_Rock-5-itx_bookworm_vendor_6.1.75_minimal.json`.
+The OS specific JSON file (e.g., `Armbian_24.8.2_Rock-5-itx_bookworm_vendor_6.1.75_minimal.json`) instructs Roobi on how to download and install the operating system. Below are the key elements based on `Armbian_24.8.2_Rock-5-itx_bookworm_vendor_6.1.75_minimal.json`.
 
 ### Root Object
 
@@ -115,7 +115,6 @@ To create a robust custom OS source that persists even if official servers disap
         *   `btusb.ko`: Binary kernel module (driver) injected by `after.sh`.
     *   **Common**:
         *   `pic/*.svg`: OS logos/icons.
-    *   By hosting these here, we ensure the "logic" of the install is safe.
 
     *   **Large Recovery Images**: For very large files (e.g., full `.img.xz` flasher images > 500MB), it is recommended to host them as **GitHub Release Assets** instead of tracking them in the Git repository. Reference them in your JSON via the permanent release download URL.
 
