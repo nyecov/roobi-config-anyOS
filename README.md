@@ -47,4 +47,8 @@ This build is designed for my homelabbing hobby and as a self-hosted NAS. All co
 ### Attribution
 This repository was generated and structured with the assistance of **Antigravity** to accelerate development time.
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R81SBTTL)
+<p align="center">
+  <a href="https://ko-fi.com/R6R81SBTTL">
+    <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="ko-fi" />
+  </a>
+</p>
