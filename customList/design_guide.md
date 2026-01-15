@@ -1,4 +1,4 @@
-# RoobiVault Design Guide
+# AnyRoobi Design Guide
 
 ## UUID Format
 

@@ -1,4 +1,4 @@
-# RoobiVault
+# AnyRoobi
 
 ## Project Goal
 The resource to provide a platform to add **any OS** to a custom list, simplifying the process of expanding the operating system choices for Roobi-compatible devices.
