@@ -146,3 +146,14 @@ OpenWrt, specifically the x86 variant (`ps010`), follows a unique pattern:
 *   **Observation**: Uses a distinct **`after.sh`** (typically `openwrt.sh`).
 *   **Utilities**: It does not use the SPI flash tools found in the ARM Linux builds.
 *   **Specifics**: The `after.sh` script for OpenWrt often includes specific commands to delete factory partitions (`fdisk` delete) and resize the Ext4 filesystem (`resize2fs`), distinguishing it from the Windows `after.sh` which uses `ntfsresize`.
+
+## Hardware Profile Reference
+
+Roobi uses specific unique identifiers (e.g., `ps009`) to identify the connected hardware board. Different boards imply different CPU architectures and installation requirements.
+
+| Profile ID | Likely Device | Architecture | Install Logic |
+| :--- | :--- | :--- | :--- |
+| **`ps009`** | **Radxa Rock 5 ITX** | **ARM (RK3588)** | **Firmware First**: Requires `before.sh` to flash SPI bootloader (U-Boot) before writing the OS image. |
+| **`ps006`** | **x86 Device** (e.g. Palmshell) | **x86_64** | **Image + Resize**: Uses standard UEFI boot. Scripts (`after.sh`) focus on resizing partitions (NTFS/Ext4) or injecting drivers. |
+| **`ps010`** | **x86 Device** (Revision?) | **x86_64** | Same as `ps006`. |
+| **`ps002`** | **x86 Device** (Legacy?) | **x86_64** | Same as `ps006`. |
