@@ -121,7 +121,6 @@ To create a robust custom OS source that persists even if official servers disap
 
 3.  **`customList/study/`**: The "Classroom".
     *   This folder mirrors the `assets` structure but contains `.verbose` and `.md` files.
-    *   **`customList/study/wiki_source/`**: A permanent, offline backup of the official Rock 5 ITX documentation, captured in raw Markdown format directly from the Radxa Docusaurus source.
     *   **Purpose**: To provide human-readable explanations of every script and binary in the warehouse. 
     *   If you find a new script in the `radxa_defaults` and want to understand it, archive it here with a `.verbose` suffix.
 
