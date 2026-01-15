@@ -10,7 +10,7 @@ It serves as a self-contained "Custom Image Source" for the Roobi OS installer.
 ## Memento & Hardware Context
 **This repository exists as a "Time Capsule" for myself.**
 
-I own a **Radxa Rock 5 ITX (16GB RAM model)**. The primary purpose of this project is to ensure that years from now—when links have rotted, wikis have moved, and my memory has faded—I can still perform a clean, working installation of my preferred OS on this specific hardware. All necessary scripts, bootloaders, and logic are archived here to withstand the test of time.
+I own a **Radxa Rock 5 ITX (16GB RAM) v1.11 model**. The primary purpose of this project is to ensure that years from now—when links have rotted, wikis have moved, and my memory has faded—I can still perform a clean, working installation of my preferred OS on this specific hardware. All necessary scripts, bootloaders, and logic are archived here to withstand the test of time.
 
 ## How to Use
 1.  In the Roobi Installer interface, look for "Advanced Features" or "Settings".
