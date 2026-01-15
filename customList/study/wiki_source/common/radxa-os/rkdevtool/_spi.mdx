@@ -1,0 +1,169 @@
+This section mainly describes how to use the RKDevTool tool to flash and erase SPI boot firmware.
+
+## SPI Boot Firmware Overview
+
+For boards that cannot boot the system normally, you can try erasing and downloading the SPI boot firmware.
+
+For users who need to boot from an NVMe SSD, you need to download the corresponding SPI boot firmware.
+
+The core task of the SPI boot firmware (BootROM + bootloader) is to initialize the hardware in stages (CPU → memory → storage) and finally load the operating system kernel from the storage device.
+
+**Both downloading and erasing SPI boot firmware require that the board has already entered Maskrom mode.**
+
+## Erase SPI Flash
+
+Erasing SPI Flash will erase the SPI boot firmware stored in SPI Flash. The system will not be able to boot. Please proceed with caution.
+
+You can download the Loader file required to erase SPI Flash from the <a href={props?.download_page ?? '../../../../download'}>Resources Download</a> page.
+
+<Tabs queryString="platform">
+
+<TabItem value="Windows">
+
+①: Make sure the board is in Maskrom mode
+
+②: Select the Loader file corresponding to your board
+
+③: Click the `Download` option to run the Loader file
+
+④: Select the `SPINOR` option
+
+⑤: Select the `Switch Storage` option to switch storage
+
+⑥: Select the `Erase ALL` option to erase SPI Flash
+
+⑦: You can monitor the operation progress on this interface
+
+Restart the system for the SPI Flash erase operation to take effect.
+
+<div style={{ textAlign: "center" }}>
+  <img
+    src="/en/img/common/tools/rkdevtool/rk-earse-spi-01.webp"
+    style={{ width: "100%", maxWidth: "1200px" }}
+  />
+</div>
+
+</TabItem>
+
+<TabItem value="Linux / MacOS">
+
+1. Make sure the board is in Maskrom mode
+
+2. Verify Maskrom mode
+
+Use the `rkdeveloptool ld` command to view the detected devices.
+
+```
+rkdeveloptool ld
+```
+
+Output similar to the following indicates that a Maskrom device has been detected:
+
+```
+DevNo=1	Vid=0x2207,Pid=0x350e,LocationID=109 Maskrom
+```
+
+3. Run the Loader file
+
+You need to replace `demo.bin` with the Loader file for your board.
+
+```
+sudo rkdeveloptool db demo.bin
+```
+
+4. Erase SPI Flash
+
+```
+sudo rkdeveloptool ef
+```
+
+5. Restart the system for the SPI Flash erase operation to take effect
+
+```
+sudo rkdeveloptool rd
+```
+
+</TabItem>
+
+</Tabs>
+
+## Flash SPI Boot Firmware
+
+To flash the SPI boot firmware with RKDevTool, you can download the required Loader file and SPI boot firmware file from the <a href={props?.download_page ?? '../../../../download'}>Resources Download</a> page.
+
+<Tabs queryString="platform">
+
+<TabItem value="Windows">
+
+①: Make sure the board is in Maskrom mode
+
+②: Select the Loader file corresponding to your board
+
+③: Select the target storage device. Here we choose the `SPINOR` option
+
+④: Select the `spi.img` file that you want to write into SPI Flash
+
+⑤: Check the `Write by Address` option
+
+⑥: Click the `RUN` option to execute all operations
+
+⑦: You can monitor the operation progress on this interface
+
+Restart the system for the SPI boot firmware to take effect.
+
+<div style={{ textAlign: "center" }}>
+  <img
+    src="/en/img/common/tools/rkdevtool/rk-down-spi-01.webp"
+    style={{ width: "100%", maxWidth: "1200px" }}
+  />
+</div>
+
+</TabItem>
+
+<TabItem value="Linux / MacOS">
+
+1. Make sure the board is in Maskrom mode
+
+2. Verify Maskrom mode
+
+Use the `rkdeveloptool ld` command to view the detected devices:
+
+```
+rkdeveloptool ld
+```
+
+Output similar to the following indicates that a Maskrom device has been detected:
+
+```
+DevNo=1	Vid=0x2207,Pid=0x350e,LocationID=109 Maskrom
+```
+
+3. Run the Loader file
+
+You need to replace `demo.bin` with the Loader file for your board.
+
+<NewCodeBlock tip="Linux / MacOS$" type="host">
+
+```
+sudo rkdeveloptool db demo.bin
+```
+
+</NewCodeBlock>
+
+4. Flash the SPI boot firmware
+
+You need to replace `spi.img` with the SPI boot firmware corresponding to your board.
+
+```
+sudo rkdeveloptool wl 0 spi.img
+```
+
+5. Restart the system for the flashed SPI boot firmware to take effect
+
+```
+sudo rkdeveloptool rd
+```
+
+</TabItem>
+
+</Tabs>

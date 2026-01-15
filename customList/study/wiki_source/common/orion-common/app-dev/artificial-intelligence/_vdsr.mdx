@@ -1,0 +1,139 @@
+**VDSR** is a milestone architecture in the development history of image super-resolution technology. It successfully increased the depth of convolutional neural networks to 20 layers for the first time, solving the convergence problem of deep networks by introducing global residual learning mechanisms, and establishing the core approach of learning "image residuals" rather than directly learning pixel values.
+
+- **Key Features**: Supports multi-scale (2x, 3x, 4x) image super-resolution reconstruction with a single model, possessing powerful edge recovery capabilities and texture detail enhancement effects. Widely used in high-definition video conversion, digital image restoration, and medical image enhancement.
+- **Version Note**: This case uses the standard VDSR architecture. The model effectively captures image context information through a large receptive field and achieves efficient training processes using high learning rates with gradient clipping techniques. As the pioneering work of deep super-resolution algorithms, it provides visual clarity far beyond traditional interpolation methods while maintaining structural simplicity, making it the classic cornerstone choice for studying super-resolution technology evolution and industrial deployment.
+
+:::info[Environment Setup]
+Configure the required environment in advance.
+
+- [Environment Setup](../../../../orion/o6/app-development/artificial-intelligence/env-setup.md)
+- [AI Model Hub](../../../../orion/o6/app-development/artificial-intelligence/ai-hub.md)
+  :::
+
+## Quick Start
+
+### Download Model Files
+
+<NewCodeBlock tip="O6 / O6N" type="device">
+
+```bash
+cd ai_model_hub_25_Q3/models/ComputeVision/Super_Resolution/onnx_vdsr
+wget https://www.modelscope.cn/models/cix/ai_model_hub_25_Q3/resolve/master/models/ComputeVision/Super_Resolution/onnx_vdsr/vdsr.cix
+```
+
+</NewCodeBlock>
+
+### Model Testing
+
+:::info
+Activate the virtual environment before running!
+:::
+
+<NewCodeBlock tip="O6 / O6N" type="device">
+
+```bash
+python3 inference_npu.py
+```
+
+</NewCodeBlock>
+
+## Complete Conversion Workflow
+
+### Download Model Files
+
+<NewCodeBlock tip="Linux PC" type="PC">
+
+```bash
+cd ai_model_hub_25_Q3/models/ComputeVision/Super_Resolution/onnx_vdsr/model
+wget https://www.modelscope.cn/models/cix/ai_model_hub_25_Q3/resolve/master/models/ComputeVision/Super_Resolution/onnx_vdsr/model/vdsr.onnx
+```
+
+</NewCodeBlock>
+
+### Project Structure
+
+```txt
+├── cfg
+├── datasets
+├── inference_npu.py
+├── inference_onnx.py
+├── model
+├── ReadMe.md
+├── test_data
+└── vdsr.cix
+```
+
+### Perform Model Quantization and Conversion
+
+<NewCodeBlock tip="Linux PC" type="PC">
+
+```bash
+cd ..
+cixbuild cfg/onnx_vdsr_build.cfg
+```
+
+</NewCodeBlock>
+
+:::info[Push to Board]
+After completing the model conversion, push the cix model file to the board.
+:::
+
+### Test Host Inference
+
+#### Run Inference Script
+
+<NewCodeBlock tip="Linux PC" type="PC">
+
+```bash
+python3 inference_onnx.py
+```
+
+</NewCodeBlock>
+
+#### Model Inference Results
+
+<div>
+
+{" "}
+
+<img src="/en/img/orion/o6/ai-models/vdsr_onnx.webp" />
+
+</div>
+
+### Deploy to NPU
+
+#### Run Inference Script
+
+<NewCodeBlock tip="O6 / O6N" type="device">
+
+```bash
+python3 inference_npu.py
+```
+
+</NewCodeBlock>
+
+#### Model Inference Results
+
+<NewCodeBlock tip="O6 / O6N" type="device">
+
+```bash
+$ python3 inference_npu.py
+npu: noe_init_context success
+npu: noe_load_graph success
+Input tensor count is 1.
+Output tensor count is 1.
+npu: noe_create_job success
+npu: noe_clean_job success
+npu: noe_unload_graph success
+npu: noe_deinit_context success
+```
+
+</NewCodeBlock>
+
+<div>
+
+{" "}
+
+<img src="/en/img/orion/o6/ai-models/vdsr_npu.webp" />
+
+</div>

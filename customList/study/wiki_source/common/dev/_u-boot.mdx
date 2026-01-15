@@ -1,0 +1,126 @@
+import { PreView } from "@site/src/utils/docs";
+
+## Using bsp
+
+bsp is a set of tools provided by Radxa to quickly build U-Boot Kernels. It is very easy to build your own U-Boot and Kernel using bsp.
+
+The following shows you how to build a kernel with bsp using Radxa ROCK 5B as an example.
+
+### bsp environment configuration
+
+The following is the recommended environment for `bsp`.  
+Hardware: x86_64 PC recommended  
+System: Ubuntu or Debian
+
+#### installs dependencies
+
+```bash
+sudo apt update
+sudo apt install -y git qemu-user-static binfmt-support
+
+# Podman (recommended)
+
+sudo apt install -y podman podman-docker
+sudo touch /etc/containers/nodocker
+
+# Docker
+
+# sudo apt install docker.io
+
+# Optional dependencies for minor features
+
+sudo apt install -y systemd-container
+```
+
+#### Getting the code
+
+`bsp` uses the git submodule. Therefore, use the following command to get the code:
+
+```bash
+git clone --recurse-submodules https://github.com/radxa-repo/bsp.git
+```
+
+#### Understanding `bsp` usage
+
+Once you have the `bsp` code on your machine, you can run `bsp` to see the built-in help:
+
+```bash
+cd bsp
+. /bsp
+```
+
+### Build U-Boot
+
+Running ./bsp will show you all the parameters and their explanations, and you can see the command `bsp [options] <linux|u-boot> <profile> [product]` from the prompt.  
+Taking Radxa ROCK 5B as an example, the U-Boot profile is "rk2410". The following are profiles for other products:
+
+|    product     | profile |        product        | profile |       product        | profile |     product     | profile |
+| :------------: | :-----: | :-------------------: | :-----: | :------------------: | :-----: | :-------------: | :-----: |
+|     rock-2     | rk2410  |      radxa-e54c       | rk2410  |      radxa-zero      | latest  |    rock-pi-e    | latest  |
+| radxa-e24c-spi | rk2410  |     radxa-nx5-io      | rk2410  |   radxa-zero-2pro    | latest  |    rock-4se     | latest  |
+|   rock-5-itx   | rk2410  | radxa-cm4-rpi-cm4-io  | rk2410  |     radxa-cm3-io     | latest  | rock-pi-4a-plus | latest  |
+|    rock-5a     | rk2410  |     radxa-cm5-io      | rk2410  | radxa-cm3-rpi-cm4-io | latest  | rock-pi-4b-plus | latest  |
+|    rock-5b     | rk2410  | radxa-cm5-rpi-cm4-io  | rk2410  | radxa-cm3-sodimm-io  | latest  |  rock-4c-plus   | latest  |
+|  rock-5b-plus  | rk2410  | radxa-cm3j-rpi-cm4-io | rk2410  |      radxa-e23       | latest  |   rock-pi-4a    | latest  |
+|    rock-5c     | rk2410  |       radxa-e25       | rknext  |     radxa-zero3      | latest  |   rock-pi-4b    | latest  |
+|    rock-5d     | rk2410  |     radxa-cm3i-io     | rknext  |       rock-3a        | latest  |   rock-pi-4c    | latest  |
+|    rock-5t     | rk2410  |                       |         |       rock-3b        | latest  | rock-4-core-io  | latest  |
+|  rock-5a-spi   | rk2410  |                       |         |       rock-3c        | latest  |                 |         |
+|  rock-5c-spi   | rk2410  |                       |         |     rock-pi-n10      | latest  |                 |         |
+|  rock-5d-spi   | rk2410  |                       |         |       rock-s0        | latest  |                 |         |
+|   radxa-e52c   | rk2410  |                       |         |      rock-pi-s       | latest  |                 |         |
+
+Then fill in the `profile` parameter of the `bsp` command with the product's corresponding `profile`: `rk2410` to pull and configure the code, for example:
+
+```bash
+./bsp u-boot rk2410 rock-5b --no-build
+# `--no-build` only configure the code without compile
+```
+
+The path to the U-Boot source code is located in `.src/u-boot` in the bsp directory, and the U-Boot can be built again after modifying the kernel source code:
+
+```bash
+cd bsp
+./bsp --no-prepare-source u-boot rk2410 rock-5b -r 999
+# Parameter description:
+# `--no-prepare-source` # This parameter is not needed for first time compilation, it is added to compile with local modifications, if this parameter is not added, the latest code will be synchronized from the Radxa kernel repository and overwrite the local modifications.
+# `-r 999` # Specify the kernel version as 999 for priority use.
+```
+
+After compilation, many `deb` packages will be generated in the current directory, you just need to install the following `deb` packages.
+
+```
+u-boot-rk2410_2017.09-999_arm64.deb
+```
+
+Copy the above one `deb` packages to the board and install them with the `dpkg` command to complete the U-Boot installation.
+
+```
+sudo dpkg -i u-boot-rk2410_2017.09-999_arm64.deb
+```
+
+After the installation is complete, you need to flash U-Boot to the boot media
+
+```
+cd /usr/lib/u-boot/rock-5b/                     # rock-5b is your current model, you need to choose according to the actual model used
+sudo ./setup.sh update_bootloader /dev/mmcblk1  # /dev/mmcblk1 is your current boot media, you need to choose according to the actual device used
+sudo reboot
+```
+
+After reboot, you can observe the U-Boot boot log to see if U-Boot has been updated successfully.
+
+## Compile manually
+
+:::tip
+`bsp` is the only compilation method currently being maintained, and it makes additional changes to the source code when compiling.
+If you want to build on our official releases, you should at least use `bsp` to download and configure the code.
+
+If you want to build with a custom `make` command, please refer to the [Prepare working tree](https://radxa-repo.github.io/bsp/dev_flow.html#prepare-working-tree) section to configure the code.
+:::
+
+## Refer to
+
+- [bsp official documentation](https://radxa-repo.github.io/bsp)
+- [U-Boot | Build U-Boot](https://u-boot.readthedocs.io/en/latest/build/index.html)
+- [U-Boot | Amlogic](https://docs.u-boot.org/en/latest/board/amlogic/)
+- [U-Boot | Rockchip](https://u-boot.readthedocs.io/en/latest/board/rockchip/)

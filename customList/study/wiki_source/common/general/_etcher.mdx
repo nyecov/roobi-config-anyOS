@@ -1,0 +1,96 @@
+import { Image } from "@site/src/utils/docs";
+
+We recommend using the open-source image flashing tool Etcher, developed by our partner Balena. Etcher has a user-friendly interface and powerful features, with support for Windows, Linux, and macOS systems. Next, we'll show you how to use Etcher to write an image to an SD card.
+
+1. Download Etcher and install it.
+
+<Tabs queryString="Platform">
+<TabItem value="Windows">
+
+Please download [balenaEtcher-Setup-1.18.11.exe](https://github.com/balena-io/etcher/releases/download/v1.18.11/balenaEtcher-Setup-1.18.11.exe) After the download is complete, there is no need to perform any additional actions. After downloading, you can double click it to open it without any additional operation.
+
+</TabItem>
+<TabItem value="Linux">
+
+Please download [balena-etcher_1.18.11_amd64.deb](https://github.com/balena-io/etcher/releases/download/v1.19.16/balena-etcher_1.19.16_amd64.deb). Once the download is complete, please install it by executing the following command in the terminal:
+
+```
+sudo dpkg -i balena-etcher_1.18.11_amd64.deb
+```
+
+</TabItem>
+</Tabs>
+
+2. Open Etcher
+
+   <Image
+     src="/img/common/etcher/#model#-step2.webp"
+     model={props.model}
+     fallback="rock5a"
+   />
+
+3. Open Etcher and click `Flash from file` to select the image to write to.
+
+:::tip Image Note
+The downloaded system image is in compressed format. You must decompress it first before using Balena Etcher for image flashing.
+:::
+
+{" "}
+
+<Image
+  src="/img/common/etcher/#model#-step2.webp"
+  model={props.model}
+  fallback="rock5a"
+/>
+
+4. Click `Select target` to select the device, please select carefully.
+
+   <Image
+     src="/img/common/etcher/#model#-step3.webp"
+     model={props.model}
+     fallback="rock5a"
+   />
+
+5. Click `Flash!` Start writing and wait for the write progress bar to complete.
+
+   <Image
+     src="/img/common/etcher/#model#-step4.webp"
+     model={props.model}
+     fallback="rock5a"
+   />
+
+6. When writing the image successfully, Etcher will display `Flash Complete!`.
+   <Image
+     src="/img/common/etcher/#model#-step5.webp"
+     model={props.model}
+     fallback="rock5a"
+   />
+
+**If there is an error in flashing, please try again. **
+
+7. Starting the system
+
+<pre>
+  After successfully burning the microSD card according to the above steps,
+  insert the microSD card into the MicroSD slot of {props.product}(as shown
+  below), power on the system with the {props.power_supply} power adapter, and
+  then the system will start booting and HDMI will display the desktop.
+</pre>
+
+<div style={{display: `${props.pwr_tip ?"block": "none"}`}}>
+
+:::tip
+Recommended official 30W adapter **Radxa PD 30W adapter**.
+:::
+
+</div>
+
+<img
+  src={props.sd_slot}
+  alt="sd slot"
+  style={{ width: "80%", display: `${props.sd_slot ? "block" : "none"}` }}
+/>
+
+8. Logging in to the system
+
+After the system has started, log in using the radxa account with the password radxa.

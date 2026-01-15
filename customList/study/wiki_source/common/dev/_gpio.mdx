@@ -1,0 +1,52 @@
+import { PreView } from "@site/src/utils/docs";
+
+GPIO Introduction
+
+General Purpose Inputs/Outputs (GPIOs) are non-dedicated digital signal pins on the circuit board of an integrated circuit or electronic circuit (e.g., MCU/MPU) that can be used as inputs or outputs, or both, and can be controlled by software.
+
+### Preparations
+
+<ul>
+  <li>One {props.product_name}</li>
+  <li>One LED</li>
+</ul>
+
+### Connection
+
+<p>
+  Connecting PIN_{props.gpio_pin} of {props.product_name} as shown
+</p>{" "}
+
+<img
+  src={props.gpio_connection}
+  alt="gpio connection"
+  style={{ width: "80%" }}
+/>
+
+### Test
+
+#### Input Tests
+
+Ground {props.gpio_pin} or connect to 3.3V,
+
+<PreView params={{ model: props.model, chip: props.chip, line: props.line }}>
+  {`
+  radxa@#model#:~$ gpioget gpiochip#chip# #line#
+  `}
+</PreView>
+
+This command outputs 0 if ground is connected and 1 if 3.3V is connected.
+
+#### Output Test
+
+<PreView params={{ model: props.model, gpio_pin: props.gpio_pin }}>
+  {`
+  radxa@#model#:~$ sudo gpioset -m signal $(sudo gpiofind PIN_#gpio_pin#)=0 # Output low, Led off
+  radxa@#model#:~$ sudo gpioset -m signal $(sudo gpiofind PIN_#gpio_pin#)=1 # Output high, Led on
+  `}
+</PreView>
+
+:::tip
+The same GPIO cannot be used by two processes at the same time, otherwise it will indicate resource usage.
+Therefore, you need to wait for the first command to finish executing before you can execute the second command.
+:::
