@@ -121,10 +121,15 @@ To create a robust custom OS source that persists even if official servers disap
 ### Why include supporting files?
 Simple OS installs just write an image to a disk. Complex installs (like for the Rock 5 ITX) often require updating the board's internal firmware (SPI Flash) to match the incoming OS. By bundling these scripts and binaries in the `assets` folder and referencing them in the `download` array of your JSON, you ensure the installation succeeds even on a board with outdated firmware.
 
-### Shared Utilities (Linux)
-Across different Linux distributions for the same hardware (e.g., Rock 5 ITX), the "utility" files required for the bootloader update process are often identical.
-*   **Observation**: Whether you are installing Ubuntu 24.04, Armbian Noble, or Debian Bookworm on the Rock 5 ITX (`ps009`), they all utilize the exact same `before.sh`, `fast_flash_spi.py`, `spi_image.xz`, and **U-Boot Debian packages** (`u-boot-rknext...` and `u-boot-rock-5-itx...`).
-*   **Benefit**: This means you can reuse the same assets in your `customList/assets/` folder for multiple different Linux OS entries for the same board.
+### Shared Utilities (Linux ARM via Rock 5 ITX)
+Across different Linux distributions for the same **ARM** hardware (e.g., Rock 5 ITX), the "utility" files required for the bootloader update process are often identical.
+*   **Observation**: Whether you are installing Ubuntu 24.04, Armbian Noble, or Debian Bookworm on the Rock 5 ITX (`ps009`), they all utilize the exact same `before.sh`, `fast_flash_spi.py`, `spi_image.xz`, and **U-Boot Debian packages**.
+*   **Benefit**: This means you can reuse the same assets in your `customList/assets/linux/` folder for multiple different Linux OS entries for the same board.
+
+### Shared Utilities (Linux x86)
+For x86 platforms (like `ps006` / `ps010`), Linux installations do **not** use the ARM SPI flashing tools. Instead, they operate more like Windows or OpenWrt x86:
+*   **Observation**: Ubuntu on `ps006` uses an **`after.sh`** script (different from the Windows one) to handle partition resizing.
+*   **Key Distinction**: Always check the target architecture. ARM needs `before.sh` (usually); x86 needs `after.sh`.
 
 ### Shared Utilities (Windows)
 Windows installations on these platforms operate differently and typically assume a pre-existing UEFI environment.
