@@ -117,9 +117,15 @@ To create a robust custom OS source that persists even if official servers disap
         *   `pic/*.svg`: OS logos/icons.
     *   By hosting these here, we ensure the "logic" of the install is safe.
 
-3.  **`customList/os_configs/*.json`**: The "Blueprints".
-    *   (e.g., `Armbian_...omv_minimal.json`)
+3.  **`customList/study/`**: The "Classroom".
+    *   This folder mirrors the `assets` structure but contains `.verbose` and `.md` files.
+    *   **Purpose**: To provide human-readable explanations of every script and binary in the warehouse. 
+    *   If you find a new script in the `radxa_defaults` and want to understand it, archive it here with a `.verbose` suffix.
+
+4.  **`customList/*.json`**: The "Blueprints".
+    *   (e.g., `Armbian_25.11.1_...omv_minimal.json`)
     *   These files define *how* to combine the **assets** (from this repo) and the **Main OS Image** (usually from an external mirror like `dl.armbian.com`) to perform a complete installation.
+    *   *Note: In this repository, OS configurations are currently kept in the `customList` root for easier access.*
 
 ### Why include supporting files?
 Simple OS installs just write an image to a disk. Complex installs (like for the Rock 5 ITX) often require updating the board's internal firmware (SPI Flash) to match the incoming OS. By bundling these scripts and binaries in the `assets` folder and referencing them in the `download` array of your JSON, you ensure the installation succeeds even on a board with outdated firmware.
