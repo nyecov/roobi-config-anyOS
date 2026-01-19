@@ -16,8 +16,8 @@
             "urls": [
                 "https://raw.githubusercontent.com/nyecov/roobi-config-anyOS/main/customList/assets/linux/before.sh"
             ],
-            "md5": "84b5707f1d4c43b8cf49224da95cbefb",
-            "sig": "GKtSkFBo9Amp6x8u1zQs9Z7ABJ8vW1OkyZRRYlc5QJOw2J5rH3ZuGC6InzwJ4rtAxqSUfZX1nbD6yLYH582T9rv669IlQVpxbu6pIkRlMtU0hOZAdqcSzQFyRgy3/erjbAyEsEjXwqZz2YSRKA2zoIwCtv2eClDwUwovaLTnx1KZq0ibMVLqoYiP8UWDcb9lAlcxZOWtysN3Q+HLeifDeWkH6BG2GACklCgClW7/cdzV/J141gjQRP6z9dvTyBFvfQ8hUwOCk8ajr+rLmcElOro/m6wzsV2kpK5FERdKHcdi8Qv2+WZrHhHMOoKGJBKfNta98h7axQo21YVofK0uOw=="
+            "md5": "a2cb632b124ef2aa6e3fbcd3d7e69bea",
+            "sig": "Dhxalf0igo2sOYj0exBeuxBITTckYGpHr8EoGyhDhxV/3Irng68QfDkFT8Fr5CC2j0+yU+OZQa+qHKMQodT2HFN0LTUbtjPXXU/SlbCqia8Jqolif10JOAHDeXZ4PTMTxsBLpYJKVaqzmoJdEOGBwFirlcS1xcJuBdQdg+1kPtEvAkI5KV0bn0TxpvalqjQj4lKxQNNPpBb30TFJi/umXOy+FWtHzOmvAFndeaWgg6m3MNiFdWJfLnyeNsxMaWemSfcMdvd5yNSolDfcXwA/4GTj+1tTugPKpGRgwxO0mzJXlQBt77xgBQn5lNG1s/ZSVQG+NSWGp4/1AmTHXpvYGA=="
         },
         {
             "file_name": "fast_flash_spi.py",
@@ -25,8 +25,8 @@
             "urls": [
                 "https://raw.githubusercontent.com/nyecov/roobi-config-anyOS/main/customList/assets/linux/fast_flash_spi.py"
             ],
-            "md5": "98e5c2bac2fa645eb3cc6b63279c446e",
-            "sig": "eT+dsc9/rGeF0uvtfe9F2vgVZxEKi1PXtGG1m710RmQgIw+f4Ufi3sdGX66hDCLfZhLWmX+zWpIEDL6n0sGzJsPlC5S4booVeL0DgZP9YZM+G0CDAsJ0dUFrFLj0Rlb3MrVnlfOVdTq6m4hRnEznWKPMYKxvNkx2MnpjuffWB0zHykG4snWF+1dXC3Ro46PkJpd4u9WDT1VzuK06ak34u3iB2V9Kx01c2xd92hNUD5ZyP9IqAHzsy4wTkWij5jwgDvj4GK4XQnLJq84DZZYhoI3oY1XljnuZfVHlw7jpNuX/b66lXFziMsRdrR2pHnKBkCnqb9D4mv/dyIAn4cSMGQ=="
+            "md5": "b97911355af3f6e4344ba44a86ed0af7",
+            "sig": "NEBPMpuM7R5fAvyyFeluVwdK6PYs9Sz0X5SZmZ+Bc6lxtJS4W+yw9QNOvRByHcuhOgLhq4tVRBSvUOpxj/r5lUKTqOBndWpAOhPQS3qHo5UME7/q54h1g0iGZzuk92n05AriaYSWsjaMnSXQwlHyOs6KiktVjjcXeTTKrDch5u1alM2pheMgyKOdGc5geQItAirKHMn1KT8YXy69DFS1HeXbhItpMFpwddd8mabPkaP/iJeJt8seochKqrgq0fGYbeQ2RejbuScs2lNxCdqKgOgocfMJtnt7hPxHTRTAxoGsoQ1dOc88Eh1vO+hSBi+VT6/9Zhd49jnUWD9n9raDxQ=="
         },
         {
             "file_name": "spi_image.xz",
@@ -35,7 +35,7 @@
                 "https://raw.githubusercontent.com/nyecov/roobi-config-anyOS/main/customList/assets/linux/spi_image.xz"
             ],
             "md5": "f232b01a57d0bb5eea1b25bd47bb7d78",
-            "sig": "JcLKnDty1FXwkuvZd4xVrt+1bd3yQTwpGwI8xyyYu7pzx+U0lcJa7sDreCSoDec7F5LVV8IHmju1VluKPoEjzf3+mLbRqvefPvUhlhx/knt8L2WI6SGFbk5O93EIxyDC9e0iT61//U2qq+Hkmn+aiXeNkDXIKoUw/cC8z5dRvLZNSzunlQf1wdtPi+EvRZYMOu3HxGr7qDIKYRP9BQHwpZ+7Me+X6/5i3bkkLC+wb5ng7pVuysZf5UxLrw7SJUsf2KVwTqMPVJWcvb1n5gn7G7Tb3bS4whb05hu7LVBF4PfV+7Jrwq2Hv6/DDB38EDGOmF+Y0yhYGt+tNKGcCraC+A=="
+            "sig": "MIEAwpzZtmMlgjEM0E6InyALm31vFA/5MxK1LTLcF1sIK7H8ddyA6kd8L312gtrT21nQEzFRU/fZYadNE+It2bxACShwOjR1wwfQAVfO6HzKVKgO/V9Rg7dx94ipLYPM4EZarLZPXOa84OfSwmBSLquWeSZum9cByn2A6Dwl761c8mtuPX7tzfdTl3H5i3pSwjboD7K29bqUwTLlPFAoUS/OzVmDizic4to9RvLAuSRV8AHioDwzFaoqXo/amO+V2LRW3MM0dsPQVuNGq5Wv/6+NuN1o6R72o7I0gG5rukYWCxNBTBt6J1WgBkpn/tIxn7GQKjgmhdeA1s3roCEsbQ=="
         },
         {
             "file_name": "u-boot-rknext_2017.09-27-44733d4_arm64.deb",
@@ -44,7 +44,7 @@
                 "https://raw.githubusercontent.com/nyecov/roobi-config-anyOS/main/customList/assets/linux/u-boot-rknext_2017.09-27-44733d4_arm64.deb"
             ],
             "md5": "fbc5a351bd137b0799edd459ffc84c8f",
-            "sig": "A5WfeecQwE1L4RnSvhETMZDqUQe8o2ObDEolBJJjgMGCLKv3wnE2WYN+DTeq0C99Fk8/VB/z8mIfSYCW9c+ilOuBz4Ai41BBH1LC9t8/CsGlkrTRVR/nHNLEyzkmp8xvmfywadrFwimQRWN+tSkWfEGl7bsTQoTs2aOJ7y8STHmt1aVGyZfdfH7APWq41qs5IhAMDrNlQuJedw2C3gtObEmm8EBB6D8ClMtjh2CVoZhqm7twU55q7zA9AiBrnsO33Zg754qlxyCa/aAQadeCmMuiJFI1sQAmlJzkllsX+jU+pI9fYDM8WiuEDD7E0TgFeWRNLsRV7rhY4MypN2qSQw=="
+            "sig": "GzQNTNsllS5hljsrWopHwoz5KmqjpPV8nLnDKxVFo/7EfJuKeViQG2xhmG2Jd2FFrOcrKKhLVVUTqmXO8Dj0seXOjtBgZCOl6PTfXqcJ8Ge/+8BDYbpnPDZ09arYZexnjpn02a1ulWV6RHmF7j9g7LRJrdykTsfO8ofpHH3jYr0pbBswasoYgwTHPZYUk546+D6Q1JTO9q27AOuojSPMFNtRbczox14jSkK4oBXEKi1DSlx6OPk6yzvf/r6Ae1Bxq+4FYG86Qiwwti1pz+f0HfG3GMtb72zE+2Q9P1OY7aQWzXDUTLFyvbAb/fy7G7olqeAm1MVsfmrYGtWKO261oQ=="
         },
         {
             "file_name": "u-boot-rock-5-itx_2017.09-27-e7f57d7_all.deb",
@@ -53,7 +53,7 @@
                 "https://raw.githubusercontent.com/nyecov/roobi-config-anyOS/main/customList/assets/linux/u-boot-rock-5-itx_2017.09-27-e7f57d7_all.deb"
             ],
             "md5": "dc0ebe53c7851a0c01182ffc54983871",
-            "sig": "jIQ0bZd7BPe844guXNGXTdEfTpUH94etXHCmo/wsjtaovCSjl+F1ncD0OVKcCxRqB0Wwv3GqhWnwiHq4jE5Kx5ReWeKTPXQOGAOdiINkDGO5sKN4itvDacjPNnN+3PdWCw5T2BYmtiXCDjQ22I6cwVj78NExPkTJQkpHa4SgMQ5EIpM4Jqe+gYxT0o0EnQmb4Fb5ppQyF1WPZV5W7UUwDY5qLMiYGlQhfvd/q0qiPbvwgkIaloI2p8yBFq96Cf1Jew4b7NlkaE/Q/zzdYrPZYqVffESZUJAlfDoqk8jXY76zS5vum5a7Hzk6k38MG15G7HIsJMokG9H8igDaKfuS+A=="
+            "sig": "c0p/bayGjVxdKkekaw9hYmqGHh0vNHQXFhpd8ju8As+EUIWERBDVLyYXMACGprSr3itCUhmHNqgghwv4lGv+VqZbCQOkv3JBx3fwYo4SIkc5SInRRm6UrjS+nJfJw2hUJrRoAfbCX7ALHAlnqWQRS7SAnVEFm1PIwFXM1wKnsxTRiLUE5h+xCvKItfrPcT4SLd323Qg82GNLE/gl0EGPeoDPRg6a/KYJgHWCxh9kfdBvW9+RcAhZatquSCclKLSoO66zp6CqqA4gbO4gQBkNjizg6Xj9gbE5Q/aw0BJgfzTS1miife1UCunQbox/KqJPo4Mh6+RFHpjXykFe6ItzNw=="
         },
         {
             "file_name": "setup_boot_order.sh",
