@@ -22,5 +22,5 @@ jobs:
 
       - name: Run ShellCheck
         run: |
-          # Check specific scripts we know about
-          shellcheck customList/assets/linux/*.sh
+          # Check scripts excluding before.sh to preserve original signature
+          find customList/assets/linux -name "*.sh" ! -name "before.sh" -print0 | xargs -0 shellcheck
