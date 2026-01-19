@@ -1,0 +1,26 @@
+name: Verify Assets
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Validate JSON Syntax
+        run: |
+          # Find all JSON files and try to parse them with Python
+          find . -name "*.json" -print0 | xargs -0 -I {} python3 -c "import json, sys; print('Checking {}'); json.load(open('{}'))"
+
+      - name: Install ShellCheck
+        run: sudo apt-get install -y shellcheck
+
+      - name: Run ShellCheck
+        run: |
+          # Check specific scripts we know about
+          shellcheck customList/assets/linux/*.sh
