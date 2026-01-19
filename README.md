@@ -28,6 +28,12 @@ I own a **Radxa Rock 5 ITX (16GB RAM) v1.11 model**. The primary purpose of this
     >
     > *Note: A second entry ("Armbian OMV Time Capsule") is also included, which pulls from a static GitHub Release backup in case the official servers are down.*
 
+## Hardware Guides
+*   **[Changing Boot Order](BOOT_ORDER.md)**: How to prioritize NVMe, SD, or USB boot without reflashing the loader.
+
+## Repository Maintenance
+*   **[Signing Guide](SIGNING.md)**: How to sign your custom assets (required if you fork this repo).
+
 ## Documentation
 For detailed guides on how this repository works, how to build custom assets, and troubleshooting, please visit the **[Project Wiki](https://github.com/nyecov/roobi-config-anyOS/wiki)**.
 

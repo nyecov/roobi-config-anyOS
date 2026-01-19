@@ -1,7 +1,7 @@
 {
     "script_version": "1",
-    "uuid": "c1fcf90fc85a450e85d1ae35628dece2",
-    "name": "Armbian Linux OpenMediaVault included",
+    "uuid": "c1fcf90fc85a450e85d1ae35628dece4",
+    "name": "Armbian Linux OpenMediaVault (SATA Boot)",
     "description": {
         "en": "Official Armbian Linux (Bookworm) from Armbian website. Minimal build with OpenMediaVault preloaded."
     },
@@ -54,6 +54,15 @@
             ],
             "md5": "dc0ebe53c7851a0c01182ffc54983871",
             "sig": "jIQ0bZd7BPe844guXNGXTdEfTpUH94etXHCmo/wsjtaovCSjl+F1ncD0OVKcCxRqB0Wwv3GqhWnwiHq4jE5Kx5ReWeKTPXQOGAOdiINkDGO5sKN4itvDacjPNnN+3PdWCw5T2BYmtiXCDjQ22I6cwVj78NExPkTJQkpHa4SgMQ5EIpM4Jqe+gYxT0o0EnQmb4Fb5ppQyF1WPZV5W7UUwDY5qLMiYGlQhfvd/q0qiPbvwgkIaloI2p8yBFq96Cf1Jew4b7NlkaE/Q/zzdYrPZYqVffESZUJAlfDoqk8jXY76zS5vum5a7Hzk6k38MG15G7HIsJMokG9H8igDaKfuS+A=="
+        },
+        {
+            "file_name": "setup_boot_order.sh",
+            "size": 1176,
+            "urls": [
+                "https://raw.githubusercontent.com/nyecov/roobi-config-anyOS/main/customList/assets/linux/setup_boot_order.sh"
+            ],
+            "md5": "7baee6e5f65290392d809442284f24e0",
+            "sig": "gGrygbWLmmgrU6INyMrUlcgBYqc5aCLqtuc0cyOkpyuwl7WNg2aPKqV86bl/ziPkESF8MCxBSkoftrmAQhKUAGrgNOUeylRNFSfoNJoqFB5HeTiYclhS7VoALvodNU2p6GhbQGldrtTb5mhVgwg8+Qe/QYokoUGF4UxsxVkptl0vcwpET8xSPKuW7U0lztU/b+C4wBZhShHXgX9ZbUBusGkjI6ha+rbhddaCrsEMRiriSAeTqufms6Xr1G4Pe/k1I95jezsWnV7NdN0UrKs8jo+/xmIMxtxi95eHafuXLZ5qwFxjabC59hMOOOqkI3I3kcMX+Ia/ibNspehnJAhLcw=="
         },
         {
             "file_name": "Armbian_Rock-5-itx_OMV.img.xz",

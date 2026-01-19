@@ -4,3 +4,6 @@ customList/images/
 temp/
 wiki/
 images/
+private.pem
+public.pem
+__pycache__/

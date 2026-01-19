@@ -32,6 +32,12 @@ if [[ ! -f $version_file  ]] || [[ $(cat $version_file) != $rknext_version ]];th
 
     if [ $return_value -eq 0 ]; then
         echo $rknext_version > $version_file || true
+        
+        # Update Boot Order
+        if [ -f "$current_script_path/setup_boot_order.sh" ]; then
+            chmod +x "$current_script_path/setup_boot_order.sh"
+            bash "$current_script_path/setup_boot_order.sh" || echo "Warning: Failed to update boot order"
+        fi
     fi
     systemctl unmask reboot.target
     systemctl unmask poweroff.target

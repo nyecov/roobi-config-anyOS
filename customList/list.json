@@ -8,5 +8,10 @@
         "uuid": "c1fcf90fc85a450e85d1ae35628dece3",
         "name": "Armbian OMV (Time Capsule)",
         "url": "https://raw.githubusercontent.com/nyecov/roobi-config-anyOS/main/customList/Armbian_Rock-5-itx_OMV_Archive.json"
+    },
+    {
+        "uuid": "c1fcf90fc85a450e85d1ae35628dece4",
+        "name": "Armbian OpenMediaVault (SATA Boot)",
+        "url": "https://raw.githubusercontent.com/nyecov/roobi-config-anyOS/main/customList/Armbian_Rock-5-itx_OMV_SATA.json"
     }
 ]
